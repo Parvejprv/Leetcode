@@ -1,0 +1,41 @@
+class Solution {
+    public static boolean isPalindrome(int num) {
+    
+    // there is some stage if x is negative then return false, if number is zero then return true, and if number%10 == 0 then false
+    if(num<0)
+        return false;
+    else if(num == 0)
+        return true;
+    else if(num % 10 == 0)
+        return false;
+
+    // take a temporary variable so that the Original value of num will not be change.
+    int t = num;
+
+    int reverse = 0;
+    while(t > 0){
+        int digit = t % 10;
+        reverse = reverse * 10 + digit;
+        t = t / 10;
+    }
+
+    //check Palindrome
+    if(reverse == num)
+    {
+        return true;
+    }
+    else{
+        return false;
+    }
+
+  }
+
+  public static void main(String args[]){
+      Scanner sc = new Scanner(System.in);
+      int n = sc.nextInt();
+
+      // Call the Method that is finding Palindrome number
+      isPalindrome(n);
+  }
+
+}
