@@ -1,0 +1,16 @@
+import java.util.*;
+
+class Solution {
+    public static int removeDuplicates(int[] nums) {
+        int n = nums.length;            // length of the array
+
+        int index = 1;
+        for(int i=0; i<n; i++){         // [1,1,2]
+            if(nums[i] != nums[index-1]){
+                nums[index++] = nums[i];
+            }
+        }
+        return index;
+    }
+
+}
