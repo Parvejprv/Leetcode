@@ -1,0 +1,63 @@
+/***********************************************************************************************
+Question : 575 Distributes candies
+************************************************************************************************/
+
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+    
+    public static int maximumCount(int arr[], int n){
+        
+        int count = 0;		// initially maxCount = 0
+        
+        ArrayList <Integer> list = new ArrayList();			// create an ArrayList
+        
+        for(int i=0; i<n; i++){
+            if(!list.contains(arr[i])){			// if list doesn't contains the elements of arr[i] then
+                list.add(arr[i]);
+                count++;
+            }
+        }
+        return Math.min(n/2, count);
+    }
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        int n = sc.nextInt();		// length
+        
+        // create an Integer array
+        int arr[] = new int[n];
+        
+        for(int i=0; i<n; i++){
+            arr[i] = sc.nextInt();		// array elements inputed here
+        }
+        
+       int ans = maximumCount(arr,n);
+        System.out.println(ans);
+    }
+}
+
+
+
+
+// Soluion : 2 Using Map
+
+import java.util.HashSet;
+import java.util.Set;
+
+
+public static class Solution1 {
+    public int distributeCandies(int[] candyType) {
+        Set<Integer> map = new HashSet<>();
+        for (int candy : candyType) {
+            map.add(candy);
+        }
+        return Math.min(map.size(), candyType.length / 2);
+    }
+}
+
+
+
