@@ -53,6 +53,27 @@ int main() {
 
 
 
+
+// Optimized Approach - Binary search
+TC: O(N(log(n))
+SC Aux: O(1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*  
 Output:-
 --------
