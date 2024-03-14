@@ -1,0 +1,77 @@
+C++
+--------------
+
+
+int maxDistance(vector<int>& stalls, int k) {
+    int n = stalls.size();
+    int start = 1, end, mid, ans = -1;
+    sort(stalls.begin(),stalls.end());    // sort the array 10 1 2 7 5 --> 1 2 5 7 10
+    
+    end = stalls[n-1]-stalls[0];
+    
+    while(start <= end){
+        mid = start + (end-start)/2;
+        
+        // initialize the count = 1, let suppose the first cow is going to put on stalls, at the first positions, i.e. stalls[0]
+        int count = 1, pos = stalls[0];
+        // run a loop till the n
+        for(int i=1; i<n; i++){
+            // check if pos-value + mid is less than equals to stalls[i], if yes then  increase the count value and set the pos value to stalls[i]
+            if((pos+mid) <= stalls[i]){
+                count++;
+                pos = stalls[i];
+            }
+        }
+        // check for valid cow placement
+        if(count < k){
+            end = mid - 1;
+        } else {
+            ans = mid;
+            start = mid + 1;
+        }
+    }
+    return ans;
+}
+
+
+
+
+
+Java
+--------
+public int maxDistance(int[] stalls, int k) {
+    int n = stalls.length;
+    int start = 1, end, mid, ans = -1;
+    Arrays.sort(stalls);    // sort the array 10 1 2 7 5 --> 1 2 5 7 10
+    
+    end = stalls[n-1]-stalls[0];
+    
+    while(start <= end){
+        mid = start + (end-start)/2;
+        
+        // initialize the count = 1, let suppose the first cow is going to put on stalls, at the first positions, i.e. stalls[0]
+        int count = 1, pos = stalls[0];
+        // run a loop till the n
+        for(int i=1; i<n; i++){
+            // check if pos-value + mid is less than equals to stalls[i], if yes then  increase the count value and set the pos value to stalls[i]
+            if((pos+mid) <= stalls[i]){
+                count++;
+                pos = stalls[i];
+            }
+        }
+        // check for valid cow placement
+        if(count < k){
+            end = mid - 1;
+        } else {
+            ans = mid;
+            start = mid + 1;
+        }
+    }
+    return ans;
+}
+
+
+
+
+TC: N*log(n)
+Axiliary Space-complexity: O(1)
