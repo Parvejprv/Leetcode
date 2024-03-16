@@ -48,3 +48,31 @@ class Solution {
     }
 }
 
+
+
+
+
+
+Solution Javascript
+====================
+
+var rearrangeArray = function(nums) {
+    let ans = [];
+    let pos = [];
+    let neg = [];
+    
+    for(let num of nums){
+        if(num > 0){
+            pos.push(num);
+        } else {
+            neg.push(num);
+        }
+    }
+    
+    for(let i=0; i<pos.length; i++){
+        ans.push(pos[i]);
+        ans.push(neg[i]);
+    }
+    return ans;
+};
+
