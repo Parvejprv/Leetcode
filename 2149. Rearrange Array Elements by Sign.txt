@@ -1,0 +1,50 @@
+Question: Rearrange Array Elements by Sign   (Leetcode)
+link: https://leetcode.com/problems/rearrange-array-elements-by-sign/
+
+Solution C++
+==============
+class Solution {
+public:
+    vector<int> rearrangeArray(vector<int>& nums) {
+        vector<int> ans;    // resultant vector
+        vector<int> pos;    // vector positive
+        vector<int> neg;    // vector negative
+        
+        // run a loop upto nums
+        for(auto num : nums)
+            (num > 0 ? pos : neg).push_back(num);
+        for(int i=0; i<pos.size(); ++i){
+            ans.push_back(pos[i]);                
+            ans.push_back(neg[i]);
+        }
+        return ans;
+    }
+};
+
+
+
+
+
+
+Solution Java
+==============
+class Solution {
+    public int[] rearrangeArray(int[] nums) {
+        // create an resultant array
+        int[] ans = new int[nums.length];
+        
+        List<Integer> pos = new ArrayList<>();  // pos arraylist
+        List<Integer> neg = new ArrayList<>();  // neg arraylist
+        
+        for(final int num : nums){
+            (num > 0 ? pos : neg).add(num);
+        }
+        
+        for(int i=0; i<pos.size(); i++){
+            ans[i*2] = pos.get(i);
+            ans[i*2+1] = neg.get(i);
+        }
+        return ans;
+    }
+}
+
