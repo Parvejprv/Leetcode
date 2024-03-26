@@ -1,0 +1,72 @@
+
+
+Solution:-
+-------------
+
+C++
+--------
+long long trappingWater(int height[], int n){
+      
+    int leftmax[n], rightmax[n];
+    
+    leftmax[0] = 0;   // initially
+    for(int i=1; i<n; i++){
+      leftmax[i] = max(leftmax[i-1], height[i-1]);
+    }
+  
+    rightmax[n-1] = 0;  // initially
+    for(int i=n-2; i>=0; i--){
+      rightmax[i] = max(rightmax[i+1], height[i+1]);
+    }
+  
+  
+    long long water = 0;
+    for(int i=0; i<n; i++){
+      int minHeight = min(leftmax[i], rightmax[i]);
+      // Now , Check for minHeight - height[i] is positive or not, if it would be negative then don't consider it
+      if(minHeight-height[i] >= 0){
+        water += minHeight-height[i];
+      }
+    }
+  return water;
+}
+
+
+
+
+
+
+
+
+
+Java:
+------
+public int trap(int[] height) {
+        if (height.length == 0) {
+            return 0;
+        }
+        int[] left = new int[height.length];
+        int[] right = new int[height.length];
+      
+        int max = height[0];
+        left[0] = height[0];
+        for (int i = 1; i < height.length; i ++) {
+            if (height[i] > max) {
+                max = height[i];
+            }
+            left[i] = max;
+        }
+        max = height[height.length - 1];
+        right[height.length - 1] = height[height.length - 1];
+        for (int i = height.length - 2; i >= 0; i --) {
+            if (height[i] > max) {
+                max = height[i];
+            }
+            right[i] = max;
+        }
+        int water = 0;
+        for (int i = 0; i < height.length; i ++) {
+            water +=Math.min(left[i], right[i]) - height[i];
+        }
+        return water;
+    } 
