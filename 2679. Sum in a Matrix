@@ -1,0 +1,57 @@
+Question: 2679. Sum in a Matrix
+link: https://leetcode.com/problems/sum-in-a-matrix/submissions/
+
+
+Solution:
+============
+
+
+C++
+=======
+int matrixSum(vector<vector<int>>& nums) {
+  int score = 0;
+
+  // to sort the rows of a 2D array
+  for(vector<int>& rows : nums)
+    ranges::sort(rows);
+
+  // Display the vector element after sorted
+  // for(vector<int>& arr : nums)
+  //   for(auto ele : arr)
+  //     cout << ele << " ";
+
+  
+  for(int j=0; j<nums[0].size(); j++){
+    int maximum = 0;
+    for(int i=0; i<nums.size(); i++){
+      maximum = max(maximum, nums[i][j]);
+    }
+    // cout << maximum << " ";     // 3, 5, 7
+    score += maximum;
+  }
+
+}
+
+
+
+
+
+Java
+======
+
+public int matrixSum(int[][] nums) {
+  int score = 0;
+  
+  // Sort the rows (array 1D)
+  for(int []rows : nums)
+    Arrays.sort(rows);
+
+  for(int j=0; j<nums[0].length; j++){
+    int maximum = 0;
+    for(int i = 0; i<nums.length; i++){
+      maximum = Math.max(maximum, nums[i][j]);
+    }
+    score = score + maximum;
+  }
+  return score;
+}
