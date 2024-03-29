@@ -1,0 +1,38 @@
+
+Question: Find the Diagonal Sum of the element
+link : https://leetcode.com/problems/matrix-diagonal-sum/submissions/
+
+
+C++
+========
+int diagonalSum(vector<vector<int>>& mat) {
+  int n = mat.size();   // size of the matrix
+  
+  int res = 0;      // initially
+  for(int i=0; i<n; i++){
+    res += mat[i][i];   // first diagonal
+    // cout << res << endl;
+    res += mat[n-1 -i][i];   // second diagonal
+    // cout << res << endl;
+  }
+  // now, let n is even then return result originally otherwise for odd skip the center element from 
+  return n % 2 == 0 ? res : res - mat[n / 2][n / 2];
+}
+
+
+
+Java
+======
+public int diagonalSum(int[][] mat) {
+    int n = mat.length;
+  
+    int res = 0;      // initially
+    for(int i=0; i<n; i++){
+      res += mat[i][i];   // first diagonal
+      // cout << res << endl;
+      res += mat[n-1 -i][i];   // second diagonal
+      // cout << res << endl;
+    }
+    // now, let n is even then return result originally otherwise for odd skip the center element from 
+    return n % 2 == 0 ? res : res - mat[n / 2][n / 2];
+}
