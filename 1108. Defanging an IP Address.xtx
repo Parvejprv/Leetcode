@@ -1,0 +1,59 @@
+Question : 1108. Defanging an IP Address
+link: https://leetcode.com/problems/defanging-an-ip-address/
+
+
+
+
+Solution : 
+==============
+
+
+
+
+C++
+=========
+string  defangIPaddr(string address) {
+  int index = 0;
+  string ans;
+  
+  while(index < address.size()){
+    // there are two cases will be there, if the address of the index is eqauls to the character '.'
+    if(address[index] == '.'){
+      ans = ans + "[.]";
+    }
+    // else, the address of index would not be equals to the character '.'
+    else {
+      ans = ans + address[index];
+    }
+    
+    index++;  // Increment the index to move to the next character
+  }
+  return ans;
+}
+
+
+
+
+
+
+Java
+=======
+
+public String defangIPaddr(String address) {
+  int index = 0;
+  String ans = "";
+
+  while(index < address.length()){
+    // there are two cases will be there, if the address of the index is eqauls to the character '.'
+    if(address.charAt(index) == '.'){
+      ans = ans + "[.]";
+    }
+    // else, the address of index would not be equals to the character '.'
+    else {
+      ans = ans + address.charAt(index);
+    }
+
+    index++;  // Increment the index to move to the next character
+  }
+  return ans;
+}
