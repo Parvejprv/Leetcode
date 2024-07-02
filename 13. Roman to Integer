@@ -1,3 +1,19 @@
+// Question:- Roman to Integer
+
+desc: take Roman number as a string and gives the output as a Integer number.
+
+
+
+
+
+
+
+
+
+// Solution:- 1 (Java)
+==========================
+
+
 class Solution {
     static int value(char ch){
         
@@ -63,3 +79,51 @@ class Solution {
         romanToInt(str);
     }
 }
+
+
+
+
+
+// Solution:- 2 (CPP)
+=======================
+
+class Solution {
+public:
+    // function that would take character as input and return integer from it
+    int num(char c) {
+      if(c == 'I') return 1;
+      if(c == 'V') return 5;
+      if(c == 'X') return 10;
+      if(c == 'L') return 50;
+      if(c == 'C') return 100;
+      if(c == 'D') return 500;
+      if(c == 'M') return 1000;
+      return 0;   // Default cse, though input gurantees calid Roman numerals
+    }
+    
+    int romanToInt(string s) {
+      int index = 0, sum = 0;
+      
+      while(index < s.size()){
+        
+        // Now we have to check for its adjacent next going character as a number
+        if(index < s.size()-1 && num(s[index]) < num(s[index+1])){
+          // Subtration case
+          sum -= num(s[index]);
+        } else {
+          // Normal addition case
+          sum += num(s[index]);
+        }
+        
+        index++; 
+      }
+      
+      return sum;
+    }
+};
+
+
+
+
+
+
