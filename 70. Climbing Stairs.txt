@@ -1,0 +1,45 @@
+Question70. Climbing Stairs
+------------
+
+
+// Solution 1. - C++ Using the fibonacci nth term
+
+int climbStairs(int n) {
+    if(n <= 1)
+      return 1;
+
+    int first = 1, second = 2, next;
+    
+    for(int i=3; i<=n; i++){
+      next = first+second;
+      first = second;
+      second = next;
+    }
+    return second;
+}
+
+
+
+
+
+// Solution 2. Using recursion
+---------------------------------
+int climbStairs(int n) {
+  if(n<=1)
+    return 1;
+    
+  return climbStairs(n-1)+climbStairs(n-2);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
